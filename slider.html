@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viweport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="main.css" >
+</head>
+<body>
+  
+    
+<div>
+ </div>                  
+                    
+    <a class="next" onclick="left()">&#10095;</a> 
+    <a class="prev" onclick="right()">&#10094;</a>
+                
+ 
+
+<script>
+    var i=0;
+    var pic= ['3.jpg','4.jpg','5.jpg'];
+    var imgs = document.getElementById("imgs");
+    var btns = document.getElementsByClassName("btn");
+    var time;
+    imgs.src= pic[0];
+    btns[i].style.backgroundColor="#717171";
+    var time;
+   
+   
+    time=setInterval(left,5000);
+  
+   
+function colorChange(){
+    
+   
+    for(let j=0;j<=2;j++)
+    {
+        if(i==j)
+        {
+          btns[j].style.backgroundColor="#717171"; 
+        }
+        else
+            {
+                btns[j].style.backgroundColor="#bbb";
+            }
+    }
+
+}  
+
+  
+    function left()
+  
+    {
+    clearInterval(time);
+    
+    i--;
+    if(i<0)
+    {
+        i=pic.length-1;
+       // i=btns.length;
+    }
+        
+     imgs.src= pic[i];
+    // btns[i].style.backgroundColor="#717171";
+   // btns[i-1].style.backgroundColor="#fff" ;
+     time=setInterval(left,5000);
+    colorChange();
+    
+}
+    
+    function right()
+    {
+    clearInterval(time);
+     
+    i++;
+    i%=pic.length;
+    if(i>pic.length-1)
+ {
+       i=0;
+ }
+     
+     imgs.src= pic[i];
+    time=setInterval(left,5000);
+    colorChange();
+}
+
+    
+
+</script>
+</body>
+</html>
